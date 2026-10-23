@@ -1,0 +1,21 @@
+{
+  "name": "fail-open-scorer",
+  "version": "0.1.0",
+  "description": "A typed client for an ML scoring service that can never block the request it serves: hard timeout, zod contract, half-opening circuit breaker, whole-response sanity checks.",
+  "license": "MIT",
+  "author": "Gaurav Narasimhan",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@types/node": "^22.7.0",
+    "typescript": "^5.5.3",
+    "vitest": "^2.1.9"
+  }
+}

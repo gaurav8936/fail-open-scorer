@@ -1,0 +1,50 @@
+{
+  "$comment": "WS-GG-RECSYS-01 M0 · example POST /v1/score exchange for the planner-ranker service (contract: src/lib/ml/score.v1.ts). Validated by src/lib/ml/__tests__/contract.test.ts.",
+  "endpoint": "POST {PLANNER_RANKER_URL}/v1/score",
+  "headers": { "authorization": "Bearer <GG_ML_RANKER_TOKEN>", "content-type": "application/json" },
+  "request": {
+    "request_id": "pr_8f0c2a7d4e5b4f7c9a1b2c3d",
+    "user_id": "104365283991200000001",
+    "spec_version": "1.0",
+    "context": {
+      "budget_min": 15,
+      "template": 15,
+      "objective": "career",
+      "focus_step": "build",
+      "beats": ["AI engineering", "Backend & infra", "Security"],
+      "week_step_minutes": { "scan": 40, "study": 10, "build": 0, "launch": 5 },
+      "seen_item_ids": ["pi_007"],
+      "local_hour": 21,
+      "dow": 3,
+      "tz": "America/Los_Angeles"
+    },
+    "user_features": { "as_of": "2026-10-15T00:00:00.000Z", "values": { "n_events": 42, "user_complete_rate_28d": 0.41, "user_ratio_eb": 1.12 } },
+    "slots": [
+      { "index": 0, "step": "scan", "minutes": 5, "swap_count": 0 },
+      { "index": 1, "step": "study", "minutes": 10, "swap_count": 1 }
+    ],
+    "candidates": [
+      { "item_id": "pi_003", "features": { "item_complete_rate": 0.52, "item_impressions_7d": 12 }, "rules": { "obj": 0.8, "int": 1, "pri": 0.9, "fresh": 1, "bal": 0.6, "nov": 1, "rules_score": 0.86 } },
+      { "item_id": "pi_006", "features": {}, "rules": { "obj": 0.7, "int": 0.3, "pri": 0.6, "fresh": 0.8, "bal": 0.9, "nov": 1, "rules_score": 0.7 } }
+    ],
+    "models": {
+      "planner-ranker": { "mode": "shadow", "version": null },
+      "completion-predictor": { "mode": "shadow", "version": null },
+      "personal-duration": { "mode": "shadow", "version": null }
+    }
+  },
+  "response": {
+    "request_id": "pr_8f0c2a7d4e5b4f7c9a1b2c3d",
+    "bundle_id": "b-20261015-03",
+    "model_versions": { "planner-ranker": "17", "completion-predictor": "4", "personal-duration": "6" },
+    "degraded": false,
+    "scores": [
+      { "slot": 0, "item_id": "pi_003", "score": 0.73, "score_raw": 0.41, "p_complete": 0.61, "duration_ratio": 1.15, "minutes_p50": 5.5 },
+      { "slot": 0, "item_id": "pi_006", "score": 0.38, "score_raw": 0.12, "p_complete": 0.33, "duration_ratio": 0.9, "minutes_p50": 9 },
+      { "slot": 1, "item_id": "pi_003", "score": 0.55, "score_raw": 0.22, "p_complete": 0.58, "duration_ratio": 1.15, "minutes_p50": 5.5 },
+      { "slot": 1, "item_id": "pi_006", "score": 0.66, "score_raw": 0.31, "p_complete": 0.47, "duration_ratio": 0.9, "minutes_p50": 9 }
+    ],
+    "missing": [],
+    "latency_ms": 11.4
+  }
+}
